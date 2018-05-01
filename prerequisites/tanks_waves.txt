@@ -1,0 +1,70 @@
+|Stage 1||★||bgcolor=skyblue|18 Basic Tanks||bgcolor=PaleGreen|2 Fast Tanks||{{n/a}}||{{n/a}}
+|-
+|Stage 2||★||bgcolor=salmon|2 Armor Tanks||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=skyblue|14 Basic Tanks||{{n/a}}
+|-
+|Stage 3||★||bgcolor=skyblue|14 Basic Tanks||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=salmon|2 Armor Tanks||{{n/a}}
+|-
+|Stage 4 ([[Libble Rabble]])||★★||bgcolor=gold|10 Power Tanks||bgcolor=PaleGreen|5 Fast Tanks||bgcolor=skyblue|2 Basic Tanks||bgcolor=Salmon|3 Armor Tanks
+|-
+|Stage 5||★||bgcolor=Gold|5 Power Tanks||bgcolor=Salmon|2 Armor Tanks||bgcolor=skyblue|8 Basic Tanks||bgcolor=PaleGreen|5 Fast Tanks
+|-
+|Stage 6||★||bgcolor=Gold|7 Power Tanks||bgcolor=PaleGreen|2 Fast Tanks||bgcolor=skyblue|9 Basic Tanks||bgcolor=Salmon|2 Armor Tanks
+|-
+|Stage 7||★★||bgcolor=skyblue|3 Basic Tanks||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=Gold|6 Power Tanks||bgcolor=skyblue|7 Basic Tanks
+|-
+|Stage 8||★★★||bgcolor=Gold|7 Power Tanks||bgcolor=Salmon|2 Armor Tanks||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=skyblue|7 Basic Tanks
+|-
+|Stage 9||★||bgcolor=skyblue|6 Basic Tanks||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=Gold|7 Power Tanks||bgcolor=Salmon|3 Armor Tanks
+|-
+|Stage 10 ([[Mappy]])||★||bgcolor=skyblue|12 Basic Tanks||bgcolor=PaleGreen|2 Fast Tanks||bgcolor=Gold|4 Power Tanks||bgcolor=Salmon|2 Armor Tanks
+|-
+|Stage 11||★★||bgcolor=PaleGreen|5 Fast Tanks||bgcolor=Salmon|6 Armor Tanks||bgcolor=Gold|4 Power Tanks||bgcolor=PaleGreen|5 Fast Tanks
+|-
+|Stage 12||★||bgcolor=Gold|8 Power Tanks||bgcolor=PaleGreen|6 Fast Tanks||bgcolor=Salmon|6 Armor Tanks||{{n/a}}
+|-
+|Stage 13||★★★||bgcolor=Gold|8 Power Tanks||bgcolor=PaleGreen|8 Fast Tanks||bgcolor=Salmon|4 Armor Tanks||{{n/a}}
+|-
+|Stage 14 (Skull)||★★★||bgcolor=Gold|10 Power Tanks||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=Salmon|6 Armor Tanks||{{n/a}}
+|-
+|Stage 15||★★||bgcolor=skyblue|2 Basic Tanks||bgcolor=PaleGreen|10 Fast Tanks||bgcolor=Salmon|8 Armor Tanks||{{n/a}}
+|-
+|Stage 16 (Praying Mantis)||★||bgcolor=Skyblue|16 Basic Tanks||bgcolor=PaleGreen|2 Fast Tanks||bgcolor=Salmon|2 Armor Tanks||{{n/a}}
+|-
+|Stage 17||★★||bgcolor=Salmon|2 Armor Tanks||bgcolor=PaleGreen|2 Fast Tanks||bgcolor=Salmon|8 Armor Tanks||bgcolor=skyblue|8 Basic Tanks
+|-
+|Stage 18||★★||bgcolor=Salmon|4 Armor Tanks||bgcolor=skyblue|2 Basic Tanks||bgcolor=Gold|6 Power Tanks||bgcolor=PaleGreen|8 Fast Tanks
+|-
+|Stage 19||★★★||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=Salmon|8 Armor Tanks ||bgcolor=skyblue|4 Basic Tanks||bgcolor=Gold|4 Power Tanks
+|-
+|Stage 20||★★★★||bgcolor=PaleGreen|8 Fast Tanks||bgcolor=skyblue|2 Basic Tanks ||bgcolor=Gold|2 Power Tanks||bgcolor=Salmon|8 Armor Tanks
+|-
+|Stage 21 ([[Dig Dug]]'s Pooka)||★★★||bgcolor=Gold|8 Power Tanks||bgcolor=PaleGreen|2 Fast Tanks||bgcolor=skyblue|6 Basic Tanks||bgcolor=Salmon|4 Armor Tanks
+|-
+|Stage 22||★★★||bgcolor=PaleGreen|8 Fast Tanks||bgcolor=skyblue|6 Basic Tanks||bgcolor=Gold|2 Power Tanks||bgcolor=Salmon|4 Armor Tanks
+|-
+|Stage 23 (Falcon)||★★||bgcolor=Salmon|6 Armor Tanks||bgcolor=Gold|4 Power Tanks||bgcolor=PaleGreen|10 Fast Tanks||{{n/a}}
+|-
+|Stage 24||★★★||bgcolor=Gold|4 Power Tanks||bgcolor=Salmon|2 Armor Tanks||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=skyblue|10 Basic Tanks
+|-
+|Stage 25||★★★||bgcolor=Gold|2 Power Tanks||bgcolor=PaleGreen|8 Fast Tanks||bgcolor=Salmon|10 Armor Tanks||{{n/a}}
+|-
+|Stage 26||★★||bgcolor=PaleGreen|6 Fast Tanks||bgcolor=Salmon|6 Armor Tanks||bgcolor=skyblue|4 Basic Tanks||bgcolor=Gold|4 Power Tanks
+|-
+|Stage 27||★★★★||bgcolor=Gold|2 Power Tanks||bgcolor=Salmon|8 Armor Tanks ||bgcolor=PaleGreen|8 Fast Tanks||bgcolor=skyblue|2 Basic Tanks
+|-
+|Stage 28 (House)||★★★||bgcolor=PaleGreen|2 Fast Tanks||bgcolor=salmon|1 Armor Tank||bgcolor=Skyblue|15 Basic Tanks ||bgcolor=Gold|2 Power Tanks
+|-
+|Stage 29 ||★★★||bgcolor=Gold|10 Power Tanks||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=Salmon|6 Armor Tanks||{{n/a}}
+|-
+|Stage 30||★★||bgcolor=skyblue|4 Basic Tanks||bgcolor=PaleGreen|8 Fast Tanks||bgcolor=Gold|4 Power Tanks||bgcolor=Salmon|4 Armor Tanks
+|-
+|Stage 31||★★||bgcolor=Gold|3 Power Tanks||bgcolor=PaleGreen|8 Fast Tanks||bgcolor=Salmon|6 Armor Tanks||bgcolor=Gold|3 Power Tanks
+|-
+|Stage 32||★★★||bgcolor=Salmon|8 Armor Tanks||bgcolor=skyblue|6 Basic Tanks||bgcolor=Gold|2 Power Tanks||bgcolor=PaleGreen|4 Fast Tanks
+|-
+|Stage 33||★★★||bgcolor=PaleGreen|4 Fast Tanks||bgcolor=Salmon|8 Armor Tanks||bgcolor=Gold|4 Power Tanks||bgcolor=PaleGreen|4 Fast Tanks
+|-
+|Stage 34 (Devil)||★★★★||bgcolor=Gold|4 Power Tanks||bgcolor=PaleGreen|10 Fast Tanks||bgcolor=Salmon|6 Armor Tanks||{{n/a}}
+|-
+|Stage 35 ([[Galaxian]])||★★||bgcolor=Gold|4 Power Tanks||bgcolor=PaleGreen|6 Fast Tanks||bgcolor=Salmon|10 Armor Tanks||{{n/a}}
+|-
