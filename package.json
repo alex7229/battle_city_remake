@@ -1,0 +1,30 @@
+{
+  "name": "battle_city_remake",
+  "version": "1.0.0",
+  "description": "Not finished.\r Client-side rendering -> react + redux. \r Server-side -> express, connected with sockets. All business logic should be on the server.",
+  "main": "index.js",
+  "dependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/pngjs": "^3.3.1",
+    "get-pixels": "^3.3.0",
+    "jest": "^22.4.3",
+    "pngjs": "^3.3.3",
+    "pngjs-image": "^0.11.7",
+    "typescript": "^2.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon --watch 'build' --inspect-brk build/sanbox/ImageParser.js",
+    "test": "jest build --watch --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tup1tsa/battle_city_remake.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tup1tsa/battle_city_remake/issues"
+  },
+  "homepage": "https://github.com/tup1tsa/battle_city_remake#readme"
+}
