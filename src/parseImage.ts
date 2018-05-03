@@ -8,7 +8,7 @@ interface Image {
   data: Buffer;
 }
 
-interface RGBA {
+export interface RGBA {
   red: number;
   green: number;
   blue: number;

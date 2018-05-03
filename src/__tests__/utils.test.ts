@@ -1,4 +1,4 @@
-import { splitInParts } from '../utils';
+import { splitInParts, flattenArray } from '../utils';
 
 describe('split in parts', () => {
 
@@ -13,4 +13,10 @@ describe('split in parts', () => {
   it('should add last part of array as it is if it`s too short', () => {
     expect(splitInParts(['as', 'ma', 'da'], 2)).toEqual([['as', 'ma'], ['da']]);
   });
+});
+
+describe('flatten array', () => {
+  const nested = [[23], [12, 17], [66]];
+  const flattened = [23, 12, 17, 66];
+  expect(flattenArray(nested)).toEqual(flattened);
 });

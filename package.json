@@ -15,7 +15,8 @@
   "devDependencies": {},
   "scripts": {
     "start": "nodemon --watch 'build' --inspect-brk build/sanbox/ImageParser.js",
-    "test": "jest build --watch --colors"
+    "test": "jest build --watch --colors",
+    "testDebug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
   },
   "repository": {
     "type": "git",
