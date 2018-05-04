@@ -14,7 +14,7 @@ export const splitInParts = <T>(input: Array<T>, partLength: number): Array<Arra
   return output;
 };
 
-export const flattenArray = <T>(input: Array<Array<T>>): Array<T> => {
+export const flattenArray: FlattenArray = <T>(input: Array<Array<T>>) => {
   let output: Array<T> = [];
   return output.concat(...input);
 };

@@ -1,19 +1,24 @@
-import { parseTankWaves } from '../../parsers/parseTankWaves';
+import { parseTankWaves, parseLine, parseWave } from '../../parsers/parseTankWaves';
 import { flattenArray } from '../../utils';
 
 describe('parse tank waves config file', () => {
 
-  it('should parse one stage', () => {
+  it('should parse one wave', () => {
+    const input = 'bgcolor=skyblue|2 Basic Tanks';
+    expect(parseWave(input)).toEqual(['Basic Tank', 'Basic Tank']);
+  });
+
+  it('should parse one line', () => {
     const input = '|Stage 9||★||bgcolor=skyblue|2 Basic Tanks||bgcolor=PaleGreen|1 Fast Tanks|' +
       '|bgcolor=Gold|1 Power Tanks||bgcolor=Salmon|2 Armor Tanks';
-    expect(parseTankWaves(input, flattenArray)).toEqual([[
+    expect(parseLine(input, flattenArray)).toEqual([
       'Basic Tank',
       'Basic Tank',
       'Fast Tank',
       'Power Tank',
       'Armor Tank',
       'Armor Tank'
-    ]]);
+    ]);
   });
 
   it('should parse multiple lines', () => {
