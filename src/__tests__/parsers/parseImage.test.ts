@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { PNG } from 'pngjs';
-import { parseImage } from '../parseImage';
-import { splitInParts } from '../utils';
+import { parseImage } from '../../parsers/parseImage';
+import { splitInParts } from '../../utils';
 
 describe('parsing image logic', () => {
   it('real image parsing test', () => {

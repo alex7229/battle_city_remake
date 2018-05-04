@@ -1,4 +1,5 @@
 import { ParsedImage, RGBA } from './parseImage';
+import { FlattenArray } from '../utils';
 
 interface Coordinate {
   row: number;
@@ -14,10 +15,6 @@ interface BlockData {
   topRight: string;
   bottomLeft: string;
   bottomRight: string;
-}
-
-interface FlattenArray {
-  <T>(input: Array<Array<T>>): Array<T>;
 }
 
 interface Config {

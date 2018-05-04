@@ -1,6 +1,6 @@
-import { parseImageFactory } from '../parseImageFactory';
-import { LevelMapParser } from '../LevelMapParser';
-import { flattenArray } from '../utils';
+import { parseImageFactory } from '../../parsers/parseImageFactory';
+import { LevelMapParser } from '../../parsers/LevelMapParser';
+import { flattenArray } from '../../utils';
 
 describe('parsing map image into level config data', () => {
 

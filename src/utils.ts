@@ -1,3 +1,7 @@
+export interface FlattenArray {
+  <T>(input: Array<Array<T>>): Array<T>;
+}
+
 export const splitInParts = <T>(input: Array<T>, partLength: number): Array<Array<T>> => {
   let output: Array<Array<T>> = [];
   for (let i = 0; i <= input.length - partLength; i += partLength) {
