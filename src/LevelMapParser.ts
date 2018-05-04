@@ -6,11 +6,14 @@ interface Coordinate {
 }
 
 interface Block {
-  topLeft: string | null;
-  bottomLeft: string | null;
-  topRight: string | null;
-  bottomRight: string | null;
   pixels: RGBA[][];
+}
+
+interface BlockData {
+  topLeft: string;
+  topRight: string;
+  bottomLeft: string;
+  bottomRight: string;
 }
 
 interface FlattenArray {
@@ -38,6 +41,7 @@ export class LevelMapParser {
     this.blocksCount = config.blocksCount ? config.blocksCount : 13;
     this.blockWidth = config.blockWidth ? config.blockWidth : 16;
     this.flattenArray = config.flattenArray;
+    this.divideOnBlocks();
   }
 
   getBlock(topLeft: Coordinate, bottomRight: Coordinate): RGBA[][] {
@@ -59,73 +63,82 @@ export class LevelMapParser {
           column: (column + 1) * this.blockWidth
         };
         this.blocks[row].push({
-          topLeft: null,
-          bottomLeft: null,
-          topRight: null,
-          bottomRight: null,
           pixels: this.getBlock(topLeft, bottomRight)
         });
       }
     }
   }
 
-  parseBlock(row: number, column: number) {
-    // here new instance of this class should be created and block should be passed as image. Block count = 4
-    // and block width = 4
+  parseAllBlocks(): BlockData[][] {
+    let data: BlockData[][] = [];
+    for (let row = 0; row < this.blocksCount; row ++) {
+      data.push([]);
+      for (let column = 0; column < this.blocksCount; column ++) {
+        data[row].push(this.parseBlock(row, column));
+      }
+    }
+    return data;
+  }
+
+  parseBlock(row: number, column: number): BlockData {
+    const block = this.blocks[row][column];
+    const parser = new LevelMapParser({
+      mapImage: {
+        width: block.pixels.length,
+        height: block.pixels[0].length,
+        pixels: block.pixels
+      },
+      flattenArray: this.flattenArray,
+      blockWidth: 8,
+      blocksCount: 2
+    });
+    return {
+      topLeft: parser.getBlockType(parser.blocks[0][0].pixels),
+      topRight: parser.getBlockType(parser.blocks[0][1].pixels),
+      bottomLeft: parser.getBlockType(parser.blocks[1][0].pixels),
+      bottomRight: parser.getBlockType(parser.blocks[1][1].pixels),
+    };
   }
 
   findPixelsCount(pixels: RGBA[][], pixel: RGBA): number {
-    // todo: make an abstraction from here
-  }
-
-  isBlockEmpty(pixels: RGBA[][]): boolean {
     return this.flattenArray(pixels)
-      .every(pixel =>
-        pixel.red === 0 && pixel.green === 0 && pixel.blue === 0 && pixel.alpha === 255
-      );
+      .filter((px) =>
+        px.blue === pixel.blue &&
+        px.red === pixel.red &&
+        px.green === pixel.green &&
+        px.alpha === pixel.alpha
+      ).length;
   }
 
-  isBlockGrass(pixels: RGBA[][]): boolean {
-    return this.flattenArray(pixels)
-      .some(pixel =>
-        pixel.red === 152 && pixel.green === 232 && pixel.blue === 0 && pixel.alpha === 255
-      );
-  }
-
-  isBlockWater(pixels: RGBA[][]): boolean {
-    return this.flattenArray(pixels)
-      .some(pixel =>
-        pixel.red === 64 && pixel.green === 64 && pixel.blue === 255 && pixel.alpha === 255
-      );
-  }
-
-  isBlockSteel(pixels: RGBA[][]): boolean {
-    // white pixels number in steel blocks is always divisible by 16 (16, 32... etc)
-    return this.flattenArray(pixels)
-      .filter(pixel =>
-        pixel.red === 255 && pixel.green === 255 && pixel.blue === 255 && pixel.alpha === 255
-      )
-      .length % 16 === 0;
-  }
-
-  isBlockIce(pixels: RGBA[][]): boolean {
-    // it's the same as steel but 14
-    return this.flattenArray(pixels)
-      .filter(pixel =>
-        pixel.red === 255 && pixel.green === 255 && pixel.blue === 255 && pixel.alpha === 255
-      )
-      .length % 14 === 0;
-  }
-
-  isBlockBrick(pixels: RGBA[][]): boolean {
-    return this.flattenArray(pixels)
-      .some(pixel =>
-        pixel.red === 192 && pixel.green === 112 && pixel.blue === 0 && pixel.alpha === 255
-      );
-  }
-
-  isBlockBase(pixels: RGBA[][]): boolean {
-
+  getBlockType(pixels: RGBA[][]): string {
+    const pixelsCount = this.flattenArray(pixels).length;
+    const colors = {
+      black: { red: 0, green: 0, blue: 0, alpha: 255 },
+      grass: { red: 152, green: 232, blue: 0, alpha: 255 },
+      water: { red: 64, green: 64, blue: 255, alpha: 255 },
+      brick: { red: 192, green: 112, blue: 0, alpha: 255 },
+      white: { red: 255, green: 255, blue: 255, alpha: 255 }
+    };
+    if (this.findPixelsCount(pixels, colors.black) === pixelsCount) {
+      return 'black';
+    }
+    if (this.findPixelsCount(pixels, colors.grass) > 0) {
+      return 'grass';
+    }
+    if (this.findPixelsCount(pixels, colors.water) > 0) {
+      return 'water';
+    }
+    if (this.findPixelsCount(pixels, colors.brick) > 0) {
+      return 'brick';
+    }
+    const whitePixels = this.findPixelsCount(pixels, colors.white);
+    if (whitePixels > 0 && whitePixels % 16 === 0) {
+      return 'steel';
+    }
+    if (whitePixels > 0 && whitePixels % 14 === 0) {
+      return 'ice';
+    }
+    return 'base';
   }
 
 }

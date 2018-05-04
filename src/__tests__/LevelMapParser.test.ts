@@ -29,77 +29,76 @@ describe('parsing map image into level config data', () => {
 
   it('should divide on blocks correctly', () => {
     const parser = new LevelMapParser(defaultParams);
-    parser.divideOnBlocks();
     const randomBlock = parser.blocks[6][6];
     expect(parser.blocks.length).toBe(parser.blocksCount);
     expect(parser.blocks.every(block => block.length === parser.blocksCount)).toBe(true);
-    expect(randomBlock.bottomLeft).toBe(null);
-    expect(randomBlock.bottomRight).toBe(null);
-    expect(randomBlock.topLeft).toBe(null);
-    expect(randomBlock.topRight).toBe(null);
     expect(randomBlock.pixels.length).toBe(parser.blockWidth);
     expect(randomBlock.pixels.every(row => row.length === parser.blockWidth)).toBe(true);
   });
 
-  it.skip('should parse black blocks correctly', () => {
-    const parser = new LevelMapParser(defaultParams);
-    parser.divideOnBlocks();
-    parser.parseBlock(0, 0);
-    let block = parser.blocks[0][0];
-    delete block.pixels;
-    expect(block).toEqual({
-      topLeft: 'empty',
-      topRight: 'empty',
-      bottomLeft: 'empty',
-      bottomRight: 'empty'
+  it('should parse partial steel blocks', () => {
+    const parser = new LevelMapParser({...defaultParams, flattenArray});
+    expect(parser.parseBlock(3, 0)).toEqual({
+      topLeft: 'steel',
+      topRight: 'steel',
+      bottomLeft: 'black',
+      bottomRight: 'black'
     });
   });
 
-  it('should validate black block as empty', () => {
-    const parser = new LevelMapParser({...defaultParams, flattenArray});
-    parser.divideOnBlocks();
-    const blackBlock = parser.blocks[0][0];
-    const greenBlock = parser.blocks[0][1];
-    expect(parser.isBlockEmpty(blackBlock.pixels)).toBe(true);
-    expect(parser.isBlockEmpty(greenBlock.pixels)).toBe(false);
-  });
-
-  it('should validate whole grass block', () => {
-    const parser = new LevelMapParser({...defaultParams, flattenArray});
-    parser.divideOnBlocks();
-    const blackBlock = parser.blocks[0][0];
-    const greenBlock = parser.blocks[0][1];
-    expect(parser.isBlockGrass(blackBlock.pixels)).toBe(false);
-    expect(parser.isBlockGrass(greenBlock.pixels)).toBe(true);
-  });
-
-  it('should validate whole water block', () => {
-    const parser = new LevelMapParser({...defaultParams, flattenArray});
-    parser.divideOnBlocks();
-    const blackBlock = parser.blocks[0][0];
-    const waterBlock = parser.blocks[5][0];
-    expect(parser.isBlockWater(blackBlock.pixels)).toBe(false);
-    expect(parser.isBlockWater(waterBlock.pixels)).toBe(true);
-  });
-
-  it('should validate whole steel and ice block', () => {
+  it('should parse partial brick blocks', () => {
     const parser = new LevelMapParser({mapImage: iceImage, flattenArray});
-    parser.divideOnBlocks();
-    const steelBlock = parser.blocks[0][2];
-    const iceBlock = parser.blocks[12][12];
-    expect(parser.isBlockSteel(steelBlock.pixels)).toBe(true);
-    expect(parser.isBlockSteel(iceBlock.pixels)).toBe(false);
-    expect(parser.isBlockIce(steelBlock.pixels)).toBe(false);
-    expect(parser.isBlockIce(iceBlock.pixels)).toBe(true);
+    expect(parser.parseBlock(5, 12)).toEqual({
+      topLeft: 'black',
+      topRight: 'brick',
+      bottomLeft: 'black',
+      bottomRight: 'brick'
+    });
   });
 
-  it('should validate whole brick and base block', () => {
+  it('should parse whole block types correctly', () => {
     const parser = new LevelMapParser({...defaultParams, flattenArray});
-    parser.divideOnBlocks();
+    const iceMapParser = new LevelMapParser({mapImage: iceImage, flattenArray});
+    const blackBlock = parser.blocks[0][0];
+    const greenBlock = parser.blocks[0][1];
+    const waterBlock = parser.blocks[5][0];
     const brickBlock = parser.blocks[6][2];
-    const baseBlock = parser.blocks[6][12];
-    expect(parser.isBlockBrick(brickBlock.pixels)).toBe(true);
-    expect(parser.isBlockBrick(baseBlock.pixels)).toBe(false);
+    const steelBlock = iceMapParser.blocks[0][2];
+    const iceBlock = iceMapParser.blocks[12][12];
+    const baseBlock = parser.blocks[12][6];
+    expect(parser.getBlockType(blackBlock.pixels)).toBe('black');
+    expect(parser.getBlockType(greenBlock.pixels)).toBe('grass');
+    expect(parser.getBlockType(waterBlock.pixels)).toBe('water');
+    expect(parser.getBlockType(brickBlock.pixels)).toBe('brick');
+    expect(iceMapParser.getBlockType(steelBlock.pixels)).toBe('steel');
+    expect(iceMapParser.getBlockType(iceBlock.pixels)).toBe('ice');
+    expect(parser.getBlockType(baseBlock.pixels)).toBe('base');
+  });
+
+  it('should calculate number of pixels correctly', () => {
+    const parser = new LevelMapParser({...defaultParams, flattenArray});
+    const emptyBlock = parser.blocks[0][0];
+    const blackPixel = { red: 0, green: 0, blue: 0, alpha: 255 };
+    expect(parser.findPixelsCount(emptyBlock.pixels, blackPixel)).toBe(256);
+  });
+
+  it('should parse all blocks correctly', () => {
+    const parser = new LevelMapParser({...defaultParams, flattenArray});
+    const block = {
+      topLeft: 'black',
+      topRight: 'ice',
+      bottomLeft: 'steel',
+      bottomRight: 'brick'
+    };
+    const parseBlockMock = jest.fn().mockReturnValue(block);
+    parser.parseBlock = parseBlockMock;
+    const blocksData = parser.parseAllBlocks();
+    expect(parseBlockMock.mock.calls.length).toBe(169);
+    // cherry picking next
+    // on fifth call it would check block with column 4 and row 0
+    expect(parseBlockMock.mock.calls[5][0]).toBe(0);
+    expect(parseBlockMock.mock.calls[5][1]).toBe(5);
+    expect(blocksData[7][11]).toBe(block);
   });
 
 });
